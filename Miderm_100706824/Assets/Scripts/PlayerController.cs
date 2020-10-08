@@ -7,16 +7,23 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
 
+    public GameObject CurrentCheckpoint;
+
     private Vector3 pVelocity;
 
     private bool pGrounded;
+    private bool Dead = false;
 
     private float pSpeed = 7.8f;
-    private float pTurnSpeed = 60.0f;
+    private float pTurnSpeed = 75.0f;
     
 
     private float gravity = -9.81f;
 
+    //void Start()
+    //{
+    //    Debug.Log(controller.GetComponent<Collider>().isTrigger);
+    //}
 
     void Update()
     {
@@ -29,18 +36,49 @@ public class PlayerController : MonoBehaviour
         //Forward Movement
         Vector3 move = transform.forward * Vertical * pSpeed;
 
-        controller.Move(move * Time.deltaTime);
-
-       
-       // Debug.Log(transform.rotation.y);
-
-
-        if (pGrounded && pVelocity.y < 0)
+        if (!Dead)
         {
-            pVelocity.y = 0f;
+            controller.Move(move * Time.deltaTime);
+
+
+            // Debug.Log(transform.rotation.y);
+
+            //Gravity is fun
+            if (pGrounded && pVelocity.y < 0)
+            {
+                pVelocity.y = 0f;
+            }
+
+            pVelocity.y += gravity * Time.deltaTime;
+            controller.Move(pVelocity * Time.deltaTime);
         }
 
-        pVelocity.y += gravity * Time.deltaTime;
-        controller.Move(pVelocity * Time.deltaTime);
+        if (Dead) //If you die get back to your previous checkpoint.
+        {
+            transform.position = CurrentCheckpoint.transform.position;
+            Dead = false;
+        }
     }
+
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "Kill-Box")
+        {
+            Dead = true;
+            print(Dead);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Triggered!");
+
+        if (other.gameObject.tag == "Kill-Box") //Kill triggers
+        {
+            Dead = true;
+            print(Dead);
+        }
+    }
+
 }
