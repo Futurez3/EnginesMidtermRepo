@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool Dead = false;
 
     private float pSpeed = 7.8f;
-    private float pTurnSpeed = 75.0f;
+    private float pTurnSpeed = 95.0f;
     
 
     private float gravity = -9.81f;
@@ -72,12 +72,18 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered!");
+        
 
         if (other.gameObject.tag == "Kill-Box") //Kill triggers
         {
             Dead = true;
             print(Dead);
+        }
+        else if (other.gameObject.tag == "Checkpoint") //Checkpoint!
+        {
+            CurrentCheckpoint = other.gameObject;
+            Debug.Log("Checkpoint_Got!");
+            other.gameObject.tag = "CP_Active";
         }
     }
 
