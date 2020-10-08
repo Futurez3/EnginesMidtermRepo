@@ -13,7 +13,10 @@ public class Score_Manager : MonoBehaviour
     private float t = 2.0f;
     private const float rate = 1.0f;
  
-
+    public int getScore()
+    {
+        return Score;
+    }
 
     // Start is called before the first frame update
     void Start()

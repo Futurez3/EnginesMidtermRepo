@@ -29,14 +29,15 @@ public class PluginHandler : MonoBehaviour
     private static extern int GetTimeScore();
 
 
+    
     float lastTime = 0.0f;
 
-    public void SaveTimeTest(float CPtime)
+    public void SaveTime(float CPtime)
     {
         SaveCheckPointTime(CPtime);
     }
 
-    public float LoadTimeTest(int index)
+    public float LoadTime(int index)
     {
        if(index >= GetNumCheckpoints())
        {
@@ -48,7 +49,7 @@ public class PluginHandler : MonoBehaviour
         }
     }
 
-    public float LoadTotalTimeTest()
+    public float LoadTotalTime()
     {
         return GetTotalTime();
     }
@@ -69,7 +70,16 @@ public class PluginHandler : MonoBehaviour
         return GetTimeScore();
     }
 
-    void OnDestroy()
+    public void TriggerCP()
+    {
+        float currentTime = Time.time;
+        float checkpointTime = currentTime - lastTime;
+        lastTime = currentTime;
+     
+        SaveTime(checkpointTime);
+    }
+
+    public void ResetLog()
     {
         ResetLoggerTest();
     }
@@ -79,28 +89,25 @@ public class PluginHandler : MonoBehaviour
         lastTime = Time.time;
     }
 
+    
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            float currentTime = Time.time;
-            float checkpointTime = currentTime - lastTime;
-            lastTime = currentTime;
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    float currentTime = Time.time;
+        //    float checkpointTime = currentTime - lastTime;
+        //    lastTime = currentTime;
+        //
+        //    SaveTimeTest(checkpointTime);
+        //}
 
-            SaveTimeTest(checkpointTime);
-        }
-
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha0+i))
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i))
             {
-                Debug.Log(LoadTimeTest(i));
+                Debug.Log(LoadTime(i));
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log(LoadTotalTimeTest());
         }
     }
 }
