@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     private bool pGrounded;
     private bool Dead = false;
 
-    private float pSpeed = 7.8f;
-    private float pTurnSpeed = 95.0f;
+    private float pSpeed = 7.6f;
+    private float pTurnSpeed = 110.0f;
     
 
     private float gravity = -9.81f;
@@ -44,12 +44,16 @@ public class PlayerController : MonoBehaviour
             // Debug.Log(transform.rotation.y);
 
             //Gravity is fun
-            if (pGrounded && pVelocity.y < 0)
+            if (pGrounded)
             {
                 pVelocity.y = 0f;
             }
+            else
+            {
+                pVelocity.y += gravity * Time.deltaTime;
+            }
 
-            pVelocity.y += gravity * Time.deltaTime;
+            
             controller.Move(pVelocity * Time.deltaTime);
         }
 
@@ -66,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (hit.gameObject.tag == "Kill-Box")
         {
             Dead = true;
-            print(Dead);
+           // print(Dead);
         }
     }
 
@@ -77,7 +81,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Kill-Box") //Kill triggers
         {
             Dead = true;
-            print(Dead);
+          //  print(Dead);
         }
         else if (other.gameObject.tag == "Checkpoint") //Checkpoint!
         {
