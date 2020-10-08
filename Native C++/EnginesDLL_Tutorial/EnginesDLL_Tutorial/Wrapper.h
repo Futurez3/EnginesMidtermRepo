@@ -21,6 +21,10 @@ extern "C"
 
 	PLUGIN_API int GetNumCheckpoints();
 
+	PLUGIN_API void SaveTimeScore(int score);
+
+	PLUGIN_API int GetTimeScore();
+
 
 #ifdef __cplusplus
 }

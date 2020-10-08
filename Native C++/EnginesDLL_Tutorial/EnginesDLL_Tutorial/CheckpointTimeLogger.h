@@ -15,9 +15,13 @@ public:
 	float GetCheckPointTime(int index);
 	int GetNumCheckpoints();
 
+	void SaveTimeScore(int score);
+	int GetTimeScore();
+
 private:
 
 	float m_TRT = 0.0f;
+	int m_score = 0;
 
 	std::vector<float> m_RTBC;
 

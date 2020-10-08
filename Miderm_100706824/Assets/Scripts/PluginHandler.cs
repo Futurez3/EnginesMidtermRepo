@@ -22,6 +22,13 @@ public class PluginHandler : MonoBehaviour
     [DllImport(DLL_NAME)]
     private static extern int GetNumCheckpoints();
 
+    [DllImport(DLL_NAME)]
+    private static extern void SaveTimeScore(int score);
+
+    [DllImport(DLL_NAME)]
+    private static extern int GetTimeScore();
+
+
     float lastTime = 0.0f;
 
     public void SaveTimeTest(float CPtime)
@@ -49,6 +56,17 @@ public class PluginHandler : MonoBehaviour
     public void ResetLoggerTest()
     {
         ResetLogger();
+    }
+
+
+    public void Save_TimeScore(int score)
+    {
+        SaveTimeScore(score);
+    }
+
+    public int Get_TimeScore()
+    {
+        return GetTimeScore();
     }
 
     void OnDestroy()

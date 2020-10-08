@@ -4,3 +4,5 @@ https://assetstore.unity.com/packages/3d/environments/dungeons/decrepit-dungeon-
 
 https://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-traps-50655
 
+
+Note: I am not trying for the animator bonus as these pre-fabs came pre-loaded with animations and are not my own. I just thought they looked cool.

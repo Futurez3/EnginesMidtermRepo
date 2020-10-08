@@ -4,6 +4,7 @@ void CheckpointTimeLogger::ResetLogger()
 {
     m_RTBC.clear();
     m_TRT = 0.0f;
+    m_score = 0;
 }
 
 void CheckpointTimeLogger::SaveCheckPointTime(float RTBC)
@@ -25,4 +26,14 @@ float CheckpointTimeLogger::GetCheckPointTime(int index)
 int CheckpointTimeLogger::GetNumCheckpoints()
 {
     return m_RTBC.size();
+}
+
+void CheckpointTimeLogger::SaveTimeScore(int score)
+{
+    m_score = score;
+}
+
+int CheckpointTimeLogger::GetTimeScore()
+{
+    return m_score;
 }

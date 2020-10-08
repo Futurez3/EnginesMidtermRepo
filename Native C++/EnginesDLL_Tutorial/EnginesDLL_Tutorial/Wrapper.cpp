@@ -26,3 +26,15 @@ PLUGIN_API int GetNumCheckpoints()
 {
 	return timeLogger.GetNumCheckpoints();
 }
+
+PLUGIN_API void SaveTimeScore(int score)
+{
+	return timeLogger.SaveTimeScore(score);
+}
+
+PLUGIN_API int GetTimeScore()
+{
+	return timeLogger.GetTimeScore();
+}
+
+
