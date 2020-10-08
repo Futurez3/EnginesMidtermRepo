@@ -7,11 +7,11 @@ public class Score_Manager : MonoBehaviour
 {
     public GameObject Score_Text;
     
-    public int Score = 50000;
+    public int Score = 10000;
     
 
-    private float t = 2.0f;
-    private const float rate = 1.0f;
+    private float t = 0.5f;
+    private const float rate = 0.5f;
  
     public int getScore()
     {
@@ -21,7 +21,7 @@ public class Score_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Score = 50000;
+        Score = 10000;
         Score_Text.GetComponent<TMPro.TextMeshProUGUI>().text = Score.ToString();
        //Score_Text.text = Score;
     }
