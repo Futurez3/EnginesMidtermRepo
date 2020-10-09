@@ -38,7 +38,7 @@ public class EndScene_Score_Manager : MonoBehaviour
 
         Score.GetComponent<TMPro.TextMeshProUGUI>().text = _pluginScript.Get_TimeScore().ToString();
 
-        _pluginScript.ResetLog();
+       // _pluginScript.ResetLog();
     }
 
     public void Reset()
@@ -58,10 +58,7 @@ public class EndScene_Score_Manager : MonoBehaviour
         _pluginScript.ResetLog();
     }
 
-    void OnDestroy()
-    {
-        _pluginScript.ResetLog();
-    }
+   
 
     // Update is called once per frame
     void Update()

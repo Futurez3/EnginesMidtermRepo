@@ -5,8 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class Scene_Manager : MonoBehaviour
 {
+
+    public PluginHandler pluginHandler;
+
    public void TransitionScene(string sceneName)
     {
+        if (sceneName == "PlayScene")
+        {
+            pluginHandler.ResetLog();
+        }
+
         SceneManager.LoadScene(sceneName);
     }
 
@@ -14,4 +22,6 @@ public class Scene_Manager : MonoBehaviour
     {
         Application.Quit();
     }
+
+  
 }
