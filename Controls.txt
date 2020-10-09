@@ -1,0 +1,6 @@
+WASD controls
+
+Forward    - W
+Back 	   - S
+Turn Left  - A
+Turn Right - D
